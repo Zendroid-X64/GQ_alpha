@@ -1,1 +1,523 @@
-<h1>Hello</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Geography Quiz</title>
+	<meta charset="utf-8">
+</head>
+
+<style type="text/css">
+	
+.main{
+	width: 70%;
+	margin: 0 auto;
+}
+
+.hero{
+	font-size: 30px;
+	font-weight: bold;
+	letter-spacing: 3px;
+	word-spacing: 15px;
+	width: 100%;
+	float: left;
+	padding: 20px 0px 20px 0px;
+}
+
+.question{
+	padding: 10px;
+	height: 130px;
+	width: 100%;
+	background-color: yellow;
+	float: left;
+	border: 2px solid black;
+}
+
+.question_txt{
+	word-spacing: 7px;
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 30px;
+}
+
+.answer{
+	padding: 10px;
+	width: 100%;
+	float: left;
+}
+
+.answer_button{
+	min-width: 47%;
+	padding: 10px;
+	margin: 5px;
+	width: auto;
+	border: 2px solid blue;
+	border-radius: 15px;
+	background: transparent;
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.answer_button:hover{
+	background: #555555;
+}
+
+.next{
+	padding: 20px;
+	font-size: 17px;
+	background: green;
+	width: 300px;
+	border-radius: 5px;
+}
+
+.score{
+	padding: 10px;
+	width: 100%;
+	float: left;
+	border: 2px solid red;
+}
+
+.result{
+	width: 70%;
+	margin: 0 auto;
+	height: auto;
+	padding: 30px;
+	border: 2px dotted black;
+	font-weight: bold;
+	font-size: 25px;
+	word-spacing: 10px;
+	letter-spacing: 4px;
+}
+
+</style>
+
+<body onload="set_var()">
+
+	<div class="main" id="main">
+
+		<div class="hero">
+			<center>Geography Quiz.</center>
+		</div>
+
+		<div class="question">
+			<center>
+				<input type="number" hidden id="q_no" value="1">
+				<div id="question" class="question_txt">Which state has smallest land area?  [IAS 2003]</div>
+			</center>
+		</div>
+
+		<div class="answer">
+
+			<center>
+				<input type="button" class="answer_button" id="answer_button1" value="Goa" onclick="validate('1')">
+				<input type="button" class="answer_button" id="answer_button2" value="Nagaland" onclick="validate('2')">
+				<input type="button" class="answer_button" id="answer_button3" value="Sikkim" onclick="validate('3')">
+				<input type="button" class="answer_button" id="answer_button4" value="Tripura" onclick="validate('4')">
+				<input type="button" class="next" id="next" value="Next" onclick="load_next()">
+				<input type="button" class="next" id="result_butt" value="Result" onclick="load_result()" hidden>
+			</center>
+			
+		</div>
+
+		<div class="score">
+			<span>Correct : </span><span id="correct"></span><br/><input type="number" id="correct_num" value="" hidden>
+			<span>Incorrect : </span><span id="incorrect"></span><br/><input type="number" id="incorrect_num" value="" hidden>
+			<span>Questions left : </span><span id="Q_left"></span><br/>
+		</div>
+
+		<marquee><p style="font-style: italic; color: red; word-spacing: 6px; letter-spacing: 2px; font-weight: bold;">Middle class aadmi, aadmi nahi chutiya hota hai.</p></marquee>
+	
+	</div>
+
+	<div class="result" id="result" hidden>
+		<center>
+			<span >Correct : </span><span id="correct_res"></span><br/><br/><br/>
+			<span >Incorrect : </span><span id="incorrect_res"></span><br/><br/><br/>
+			<span >Total Score : </span><span id="score"></span><br/><br/><br/>
+		</center>
+		
+	</div>
+
+</body>
+
+<script type="text/javascript">
+	
+	function set_var()
+	{
+		document.getElementById("q_no").value=1;
+		document.getElementById("correct").innerHTML=0;
+		document.getElementById("correct_num").value=0;
+		document.getElementById("incorrect").innerHTML=0;
+		document.getElementById("incorrect_num").value=0;
+		document.getElementById("Q_left").innerHTML=10;
+	}
+
+	function validate(x)
+	{
+		//validate the answer and highlight
+		var q_no = document.getElementById("q_no").value;
+		switch(q_no)
+		{
+			case '1':
+			var answer = 1;
+			if (answer == x)
+			{
+				var temp = document.getElementById("correct_num").value;
+				temp++;
+				document.getElementById("correct").innerHTML=temp;
+				document.getElementById("correct_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="green";
+			}
+			else{
+				var temp = document.getElementById("incorrect_num").value;
+				temp++;
+				document.getElementById("incorrect").innerHTML=temp;
+				document.getElementById("incorrect_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="red";
+				document.getElementById("answer_button"+answer).style.backgroundColor="green";
+			}
+			document.getElementById("answer_button1").disabled=true;
+			document.getElementById("answer_button2").disabled=true;
+			document.getElementById("answer_button3").disabled=true;
+			document.getElementById("answer_button4").disabled=true;
+			break;
+
+			case '2':
+			var answer = 1;
+			if (answer == x)
+			{
+				var temp = document.getElementById("correct_num").value;
+				temp++;
+				document.getElementById("correct").innerHTML=temp;
+				document.getElementById("correct_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="green";
+			}
+			else{
+				var temp = document.getElementById("incorrect_num").value;
+				temp++;
+				document.getElementById("incorrect").innerHTML=temp;
+				document.getElementById("incorrect_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="red";
+				document.getElementById("answer_button"+answer).style.backgroundColor="green";
+			}
+			document.getElementById("answer_button1").disabled=true;
+			document.getElementById("answer_button2").disabled=true;
+			document.getElementById("answer_button3").disabled=true;
+			document.getElementById("answer_button4").disabled=true;
+			break;
+
+			case '3':
+			var answer = 4;
+			if (answer == x)
+			{
+				var temp = document.getElementById("correct_num").value;
+				temp++;
+				document.getElementById("correct").innerHTML=temp;
+				document.getElementById("correct_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="green";
+			}
+			else{
+				var temp = document.getElementById("incorrect_num").value;
+				temp++;
+				document.getElementById("incorrect").innerHTML=temp;
+				document.getElementById("incorrect_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="red";
+				document.getElementById("answer_button"+answer).style.backgroundColor="green";
+			}
+			document.getElementById("answer_button1").disabled=true;
+			document.getElementById("answer_button2").disabled=true;
+			document.getElementById("answer_button3").disabled=true;
+			document.getElementById("answer_button4").disabled=true;
+			break;
+
+			case '4':
+			var answer = 1;
+			if (answer == x)
+			{
+				var temp = document.getElementById("correct_num").value;
+				temp++;
+				document.getElementById("correct").innerHTML=temp;
+				document.getElementById("correct_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="green";
+			}
+			else{
+				var temp = document.getElementById("incorrect_num").value;
+				temp++;
+				document.getElementById("incorrect").innerHTML=temp;
+				document.getElementById("incorrect_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="red";
+				document.getElementById("answer_button"+answer).style.backgroundColor="green";
+			}
+			document.getElementById("answer_button1").disabled=true;
+			document.getElementById("answer_button2").disabled=true;
+			document.getElementById("answer_button3").disabled=true;
+			document.getElementById("answer_button4").disabled=true;
+			break;
+
+			case '5':
+			var answer = 4;
+			if (answer == x)
+			{
+				var temp = document.getElementById("correct_num").value;
+				temp++;
+				document.getElementById("correct").innerHTML=temp;
+				document.getElementById("correct_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="green";
+			}
+			else{
+				var temp = document.getElementById("incorrect_num").value;
+				temp++;
+				document.getElementById("incorrect").innerHTML=temp;
+				document.getElementById("incorrect_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="red";
+				document.getElementById("answer_button"+answer).style.backgroundColor="green";
+			}
+			document.getElementById("answer_button1").disabled=true;
+			document.getElementById("answer_button2").disabled=true;
+			document.getElementById("answer_button3").disabled=true;
+			document.getElementById("answer_button4").disabled=true;
+			break;
+
+			case '6':
+			var answer = 4;
+			if (answer == x)
+			{
+				var temp = document.getElementById("correct_num").value;
+				temp++;
+				document.getElementById("correct").innerHTML=temp;
+				document.getElementById("correct_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="green";
+			}
+			else{
+				var temp = document.getElementById("incorrect_num").value;
+				temp++;
+				document.getElementById("incorrect").innerHTML=temp;
+				document.getElementById("incorrect_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="red";
+				document.getElementById("answer_button"+answer).style.backgroundColor="green";
+			}
+			document.getElementById("answer_button1").disabled=true;
+			document.getElementById("answer_button2").disabled=true;
+			document.getElementById("answer_button3").disabled=true;
+			document.getElementById("answer_button4").disabled=true;
+			break;
+
+			case '7':
+			var answer = 3;
+			if (answer == x)
+			{
+				var temp = document.getElementById("correct_num").value;
+				temp++;
+				document.getElementById("correct").innerHTML=temp;
+				document.getElementById("correct_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="green";
+			}
+			else{
+				var temp = document.getElementById("incorrect_num").value;
+				temp++;
+				document.getElementById("incorrect").innerHTML=temp;
+				document.getElementById("incorrect_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="red";
+				document.getElementById("answer_button"+answer).style.backgroundColor="green";
+			}
+			document.getElementById("answer_button1").disabled=true;
+			document.getElementById("answer_button2").disabled=true;
+			document.getElementById("answer_button3").disabled=true;
+			document.getElementById("answer_button4").disabled=true;
+			break;
+
+			case '8':
+			var answer = 4;
+			if (answer == x)
+			{
+				var temp = document.getElementById("correct_num").value;
+				temp++;
+				document.getElementById("correct").innerHTML=temp;
+				document.getElementById("correct_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="green";
+			}
+			else{
+				var temp = document.getElementById("incorrect_num").value;
+				temp++;
+				document.getElementById("incorrect").innerHTML=temp;
+				document.getElementById("incorrect_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="red";
+				document.getElementById("answer_button"+answer).style.backgroundColor="green";
+			}
+			document.getElementById("answer_button1").disabled=true;
+			document.getElementById("answer_button2").disabled=true;
+			document.getElementById("answer_button3").disabled=true;
+			document.getElementById("answer_button4").disabled=true;
+			break;
+
+			case '9':
+			var answer = 4;
+			if (answer == x)
+			{
+				var temp = document.getElementById("correct_num").value;
+				temp++;
+				document.getElementById("correct").innerHTML=temp;
+				document.getElementById("correct_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="green";
+			}
+			else{
+				var temp = document.getElementById("incorrect_num").value;
+				temp++;
+				document.getElementById("incorrect").innerHTML=temp;
+				document.getElementById("incorrect_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="red";
+				document.getElementById("answer_button"+answer).style.backgroundColor="green";
+			}
+			document.getElementById("answer_button1").disabled=true;
+			document.getElementById("answer_button2").disabled=true;
+			document.getElementById("answer_button3").disabled=true;
+			document.getElementById("answer_button4").disabled=true;
+			break;
+
+			case '10':
+			var answer = 2;
+			if (answer == x)
+			{
+				var temp = document.getElementById("correct_num").value;
+				temp++;
+				document.getElementById("correct").innerHTML=temp;
+				document.getElementById("correct_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="green";
+			}
+			else{
+				var temp = document.getElementById("incorrect_num").value;
+				temp++;
+				document.getElementById("incorrect").innerHTML=temp;
+				document.getElementById("incorrect_num").value=temp;
+				document.getElementById("answer_button"+x).style.backgroundColor="red";
+				document.getElementById("answer_button"+answer).style.backgroundColor="green";
+			}
+			document.getElementById("answer_button1").disabled=true;
+			document.getElementById("answer_button2").disabled=true;
+			document.getElementById("answer_button3").disabled=true;
+			document.getElementById("answer_button4").disabled=true;
+			break;
+		}
+		
+	}
+
+	function load_next()
+	{
+		//load next question
+		document.getElementById("answer_button1").disabled=false;
+		document.getElementById("answer_button2").disabled=false;
+		document.getElementById("answer_button3").disabled=false;
+		document.getElementById("answer_button4").disabled=false;
+		document.getElementById("answer_button1").style.backgroundColor="white";
+		document.getElementById("answer_button2").style.backgroundColor="white";
+		document.getElementById("answer_button3").style.backgroundColor="white";
+		document.getElementById("answer_button4").style.backgroundColor="white";
+		var q_no = document.getElementById("q_no").value;
+		var total_q_left = 10 - q_no;
+		document.getElementById("Q_left").innerHTML=total_q_left;
+		if (q_no == 9)
+		{
+			document.getElementById("next").hidden=true;
+			document.getElementById("result_butt").hidden=false;
+		}
+		q_no++;
+		switch(q_no)
+		{
+			case 2:
+			document.getElementById("q_no").value=q_no;
+			document.getElementById("question").innerHTML="The climate of India is mainly tropical because: [CDS 2002]";
+			document.getElementById("answer_button1").value="of the location of the Himalayas in its North";
+			document.getElementById("answer_button2").value="major part of India lies within the tropics";
+			document.getElementById("answer_button3").value="of the overpowering influence of India Ocean";
+			document.getElementById("answer_button4").value="of the seasonal influence of jet streams";
+			break;
+
+			case 3:
+			document.getElementById("q_no").value=q_no;
+			document.getElementById("question").innerHTML="The two volcanic islands in the Indian territory are:";
+			document.getElementById("answer_button1").value="Kavaratti and New Moor";
+			document.getElementById("answer_button2").value="Bitra and Kavaratti";
+			document.getElementById("answer_button3").value="Pamban and Barren";
+			document.getElementById("answer_button4").value="Narcondam and Barren";
+			break;
+
+			case 4:
+			document.getElementById("q_no").value=q_no;
+			document.getElementById("question").innerHTML="Among the following Union Territories of India, which one has the largest size? [CDS2002]";
+			document.getElementById("answer_button1").value="Pondicherry";
+			document.getElementById("answer_button2").value="Lakshadweep";
+			document.getElementById("answer_button3").value="Daman and Diu";
+			document.getElementById("answer_button4").value="Chandigarh";
+			break;
+
+			case 5:
+			document.getElementById("q_no").value=q_no;
+			document.getElementById("question").innerHTML="Which one of the following pairs is correctly matched? [CDS 1999]";
+			document.getElementById("answer_button1").value="Plimsoll Line : India and Afghanistan";
+			document.getElementById("answer_button2").value="Durand Line : India and Myanmar";
+			document.getElementById("answer_button3").value="Macmohan Line : India and Nepal";
+			document.getElementById("answer_button4").value="Radcliffe Line : India and Pakistan";
+			break;
+
+			case 6:
+			document.getElementById("q_no").value=q_no;
+			document.getElementById("question").innerHTML="Duncan Passage is situated between: [CDS 1999]";
+			document.getElementById("answer_button1").value="Minicoy and Amindiv";
+			document.getElementById("answer_button2").value="Minicoy and Maldives";
+			document.getElementById("answer_button3").value="Little Andaman and Car Nicobar";
+			document.getElementById("answer_button4").value="South Andaman and Little Andaman";
+			break;
+
+			case 7:
+			document.getElementById("q_no").value=q_no;
+			document.getElementById("question").innerHTML="Ten Degree Channel is between: [CDS 2011]";
+			document.getElementById("answer_button1").value="Dover and Calais";
+			document.getElementById("answer_button2").value="Alaska and Russia";
+			document.getElementById("answer_button3").value="Little Andaman and Car Nicobar";
+			document.getElementById("answer_button4").value="North Korea and South Korea";
+			break;
+
+			case 8:
+			document.getElementById("q_no").value=q_no;
+			document.getElementById("question").innerHTML="If the usual rule of calculation of time were applied for the extremes of Gujrat and Arunachal Pradesh, then approximately time: [CPO AC 2003]";
+			document.getElementById("answer_button1").value="at Gujarat would be ahead of that at Arunachal Pradesh by about 3 hours";
+			document.getElementById("answer_button2").value="at Gujarat would be ahead of that at Arunachal Pradesh by about 2 hours";
+			document.getElementById("answer_button3").value="at Arunachal Pradesh would be ahead of that at Gujarat by about 3 hours";
+			document.getElementById("answer_button4").value="at Arunachal Pradesh would be ahead of that at Gujarat by about 2 hours";
+			break;
+
+			case 9:
+			document.getElementById("q_no").value=q_no;
+			document.getElementById("question").innerHTML="‘Indian Standard Meridian’ passes through the states of UP, MP: [CDS 2000]";
+			document.getElementById("answer_button1").value="AP and Karnataka";
+			document.getElementById("answer_button2").value="AP and Tamil Nadu";
+			document.getElementById("answer_button3").value="Karnataka and Tamil Nadu";
+			document.getElementById("answer_button4").value="Orissa and AP";
+			break;
+
+			case 10:
+			document.getElementById("q_no").value=q_no;
+			document.getElementById("question").innerHTML="The Lakshadweep Islands are situated in : [Bank PO 2007]";
+			document.getElementById("answer_button1").value="Indian Ocean";
+			document.getElementById("answer_button2").value="Arabian Sea";
+			document.getElementById("answer_button3").value="Bay of Bengal";
+			document.getElementById("answer_button4").value="none of these";
+			break;
+		}
+
+	}
+
+	function load_result()
+	{
+		var t1 = document.getElementById("correct_num").value;
+		var t2 = document.getElementById("incorrect_num").value;
+		document.getElementById("correct_res").innerHTML=t1;
+		document.getElementById("incorrect_res").innerHTML=t2;
+		t1 = t1*10;
+		document.getElementById("score").innerHTML=t1+'%';
+		document.getElementById("main").hidden=true;
+		document.getElementById("result").hidden=false;
+	}
+
+</script>
+
+</html>
